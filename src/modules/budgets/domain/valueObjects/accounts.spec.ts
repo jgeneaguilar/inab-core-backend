@@ -2,6 +2,7 @@ import Accounts from './accounts';
 import Account from 'modules/budgets/domain/entities/account';
 
 import faker from '@faker-js/faker';
+import { Guid } from 'shared/domain';
 
 describe('Accounts', () => {
 	it('should accept an array of accounts', () => {
@@ -12,6 +13,7 @@ describe('Accounts', () => {
 
 	it('should set the initial value of accounts', () => {
 		const account = Account.init({
+			budgetId: Guid.init(),
 			name: faker.finance.accountName(),
 			balance: faker.datatype.number({ precision: 0.01 }),
 		}).value;

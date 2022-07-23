@@ -1,11 +1,12 @@
 import Budget from 'modules/budgets/domain/entities/budget';
+import { Guid } from 'shared/domain';
 
 export class BudgetMapper {
 	public static toDTO(budget: Budget) {
 		return {
 			id: budget.id.value,
 			name: budget.name,
-			ownerId: budget.ownerId?.value || Guid.init(),
+			ownerId: budget.ownerId?.value || Guid.init().value,
 		};
 	}
 
@@ -28,7 +29,7 @@ export class BudgetMapper {
 				accounts: budget.accounts,
 				ownerId: budget.owner,
 			},
-			budget._id
+			new Guid(budget._id)
 		);
 
 		return budgetResult.isSuccess ? budgetResult.value : null;

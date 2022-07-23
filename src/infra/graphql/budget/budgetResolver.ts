@@ -1,3 +1,14 @@
+import {
+	Arg,
+	Resolver,
+	Query,
+	Mutation,
+	FieldResolver,
+	Root,
+} from 'type-graphql';
+
+import { Service } from 'typedi';
+
 import BudgetType from './types/BudgetType';
 
 import { AccountMapper } from 'modules/budgets/mappers/accountMapper';
@@ -7,16 +18,6 @@ import { GetAccountsByBudgetId } from 'modules/budgets/useCases/accounts/getAcco
 import { GetBudget } from 'modules/budgets/useCases/budget/getBudget/GetBudget';
 
 import { Guid } from 'shared/domain';
-
-import {
-	Arg,
-	Resolver,
-	Query,
-	Mutation,
-	FieldResolver,
-	Root,
-} from 'type-graphql';
-import { Service } from 'typedi';
 
 @Service()
 @Resolver(BudgetType)
@@ -42,11 +43,15 @@ export default class BudgetResolver {
 
 	@FieldResolver()
 	async accounts(@Root() budget: BudgetType) {
-		const accounts = await this.getAccountsByBudgetIdUseCase.execute({
+		const accountsResult = await this.getAccountsByBudgetIdUseCase.execute({
 			budgetId: budget.id,
 		});
 
-		return accounts.value.items.map((acc) => AccountMapper.toDTO(acc));
+		if (accountsResult.isFailure) {
+			throw accountsResult.error;
+		}
+
+		return accountsResult.value.items.map((acc) => AccountMapper.toDTO(acc));
 	}
 
 	@Mutation(() => BudgetType)

@@ -3,7 +3,12 @@ import { ObjectId } from 'bson';
 export class Guid {
 	_id: ObjectId;
 
-	constructor(value?: string) {
+	constructor(value?: string | ObjectId) {
+		if (value instanceof ObjectId) {
+			this._id = new ObjectId(value);
+			return;
+		}
+
 		this._id = ObjectId.isValid(value) ? new ObjectId(value) : new ObjectId();
 	}
 
@@ -11,7 +16,7 @@ export class Guid {
 		return this._id.toString();
 	}
 
-	static init() {
-		return new ObjectId().toString();
+	static init(): Guid {
+		return new Guid(new ObjectId().toString());
 	}
 }
