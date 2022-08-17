@@ -18,7 +18,9 @@ export class AccountRepository implements IAccountRepository {
 		return accounts;
 	}
 
-	async save(account: Account): Promise<void> {}
+	async save(account: Account): Promise<void> {
+		// pass
+	}
 
 	private createAccount(budgetId?: Guid, accountId?: Guid): Account {
 		const accountResult = Account.init(

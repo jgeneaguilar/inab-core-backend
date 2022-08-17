@@ -1,6 +1,6 @@
 export class Guard {
 	static isNotNullOrUndefined(
-		value: any,
+		value: unknown,
 		valueType: string
 	): Error | undefined {
 		if (value === null || value === undefined) {

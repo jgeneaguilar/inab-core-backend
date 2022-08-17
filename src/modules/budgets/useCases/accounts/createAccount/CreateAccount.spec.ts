@@ -2,7 +2,6 @@ import { CreateAccount, ICreateAccountDTO } from './CreateAccount';
 
 import { AccountRepository } from 'modules/budgets/repos/implementations/accountRepository';
 import { BudgetRepository } from 'modules/budgets/repos/implementations/budgetRepository';
-import { Guid } from 'shared/domain';
 
 import faker from '@faker-js/faker';
 import { accountRepository, budgetRepository } from 'modules/budgets/repos';

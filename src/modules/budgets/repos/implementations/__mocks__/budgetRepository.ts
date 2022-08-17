@@ -23,5 +23,7 @@ export class BudgetRepository implements IBudgetRepository {
 		return mockBudgetResult.value;
 	}
 
-	async save(): Promise<void> {}
+	async save(): Promise<void> {
+		// pass
+	}
 }

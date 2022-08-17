@@ -6,7 +6,7 @@ import { IAccountRepository } from 'modules/budgets/repos/interfaces/accountRepo
 import { IBudgetRepository } from 'modules/budgets/repos/interfaces/budgetRepository';
 
 import { Guard } from 'shared/core/guards/Guard';
-import { accountRepository, budgetRepository } from 'modules/budgets/repos';
+import { accountRepository } from 'modules/budgets/repos';
 import { Service } from 'typedi';
 import CreateAccountFactory from './CreateAccountFactory';
 

@@ -1,4 +1,3 @@
-import Account from 'modules/budgets/domain/entities/account';
 import Accounts from 'modules/budgets/domain/valueObjects/accounts';
 import { AccountRepository } from 'modules/budgets/repos/implementations/accountRepository';
 import { IAccountRepository } from 'modules/budgets/repos/interfaces/accountRepository';

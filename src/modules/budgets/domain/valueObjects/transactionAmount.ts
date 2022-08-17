@@ -1,4 +1,3 @@
-import { Guard } from 'shared/core/guards/Guard';
 import { Result } from 'shared/core/Result';
 
 interface TransactionAmountProps {

@@ -1,7 +1,7 @@
 import { AccountMapper } from 'modules/budgets/mappers/accountMapper';
 import { CreateAccount } from 'modules/budgets/useCases/accounts/createAccount/CreateAccount';
 
-import { Arg, Mutation, Query, Resolver } from 'type-graphql';
+import { Arg, Mutation, Resolver } from 'type-graphql';
 import { Service } from 'typedi';
 import AccountType from './types/AccountType';
 
